@@ -1,31 +1,101 @@
-question,answer,intent,source,last_updated
-How many annual leaves do I get?,Employees get 18 annual leaves per year.,leave_policy,hr_policy.pdf,2025-01-01
-How many paid leaves are available?,Employees get 18 annual leaves per year.,leave_policy,hr_policy.pdf,2025-01-01
-What is the annual leave policy?,Employees get 18 annual leaves per year.,leave_policy,hr_policy.pdf,2025-01-01
-How can I reset my VPN password?,Use the IT self-service portal to reset your VPN password.,vpn_reset,it_faq.pdf,2025-01-01
-"I forgot my VPN password, how do I change it?",Use the IT self-service portal to reset your VPN password.,vpn_reset,it_faq.pdf,2025-01-01
-Where do I reset my VPN credentials?,Use the IT self-service portal to reset your VPN password.,vpn_reset,it_faq.pdf,2025-01-01
-When is payroll processed?,Payroll is processed on the last working day of each month.,payroll_dates,payroll_calendar.pdf,2025-01-01
-What day do salaries get credited?,Payroll is processed on the last working day of each month.,payroll_dates,payroll_calendar.pdf,2025-01-01
-When do we get paid?,Payroll is processed on the last working day of each month.,payroll_dates,payroll_calendar.pdf,2025-01-01
-How do I submit travel expenses?,Submit travel expenses through the expense portal within 10 business days.,expense_reimbursement,finance_policy.pdf,2025-01-01
-What is the reimbursement process?,Submit travel expenses through the expense portal within 10 business days.,expense_reimbursement,finance_policy.pdf,2025-01-01
-How can I claim my business trip expenses?,Submit travel expenses through the expense portal within 10 business days.,expense_reimbursement,finance_policy.pdf,2025-01-01
-How do I request a laptop?,Create a hardware request ticket in the IT service portal.,laptop_request,it_faq.pdf,2025-01-01
-Where can I request a new laptop?,Create a hardware request ticket in the IT service portal.,laptop_request,it_faq.pdf,2025-01-01
-What is the laptop request process?,Create a hardware request ticket in the IT service portal.,laptop_request,it_faq.pdf,2025-01-01
-How do I apply for work from home?,Follow the remote work policy and get manager approval in the HR portal.,wfh_policy,hr_policy.pdf,2025-01-01
-What is the WFH policy?,Follow the remote work policy and get manager approval in the HR portal.,wfh_policy,hr_policy.pdf,2025-01-01
-Can I work from home?,Follow the remote work policy and get manager approval in the HR portal.,wfh_policy,hr_policy.pdf,2025-01-01
-How can I update my bank details?,Update bank details in the payroll self-service system before the 20th.,bank_details,payroll_faq.pdf,2025-01-01
-Where do I change salary bank account details?,Update bank details in the payroll self-service system before the 20th.,bank_details,payroll_faq.pdf,2025-01-01
-How do I change my bank account for salary?,Update bank details in the payroll self-service system before the 20th.,bank_details,payroll_faq.pdf,2025-01-01
-How do I raise a leave request?,Submit leave requests in the HR portal and wait for manager approval.,leave_request,hr_portal_guide.pdf,2025-01-01
-Where can I submit leave?,Submit leave requests in the HR portal and wait for manager approval.,leave_request,hr_portal_guide.pdf,2025-01-01
-How do I apply for leave?,Submit leave requests in the HR portal and wait for manager approval.,leave_request,hr_portal_guide.pdf,2025-01-01
-How do I access payslips?,Payslips are available in the payroll self-service portal.,payslip_access,payroll_faq.pdf,2025-01-01
-Where can I download my payslip?,Payslips are available in the payroll self-service portal.,payslip_access,payroll_faq.pdf,2025-01-01
-How do I get salary slips?,Payslips are available in the payroll self-service portal.,payslip_access,payroll_faq.pdf,2025-01-01
-How do I get a VPN account?,Request VPN access from the IT access management portal.,vpn_access,it_faq.pdf,2025-01-01
-Where do I request VPN access?,Request VPN access from the IT access management portal.,vpn_access,it_faq.pdf,2025-01-01
-How can I apply for VPN access?,Request VPN access from the IT access management portal.,vpn_access,it_faq.pdf,2025-01-01
+question,intent,answer,source,metadata
+change bank account please,bank_details,This is the answer for bank details.,generated,{}
+need new laptop urgently,laptop_request,This is the answer for laptop request.,generated,{}
+how to claim expenses asap,expense_reimbursement,This is the answer for expense reimbursement.,generated,{}
+access payslip please,payslip_access,This is the answer for payslip access.,generated,{}
+access payslip please,payslip_access,This is the answer for payslip access.,generated,{}
+salary processing date asap,payroll_dates,This is the answer for payroll dates.,generated,{}
+request leave process asap,leave_request,This is the answer for leave request.,generated,{}
+how to update bank details,bank_details,This is the answer for bank details.,generated,{}
+what is leave policy please,leave_policy,This is the answer for leave policy.,generated,{}
+how to reset vpn password,vpn_reset,This is the answer for vpn reset.,generated,{}
+leave eligibility details urgently,leave_policy,This is the answer for leave policy.,generated,{}
+when is salary credited asap,payroll_dates,This is the answer for payroll dates.,generated,{}
+expense reimbursement process please,expense_reimbursement,This is the answer for expense reimbursement.,generated,{}
+salary date please,payroll_dates,This is the answer for payroll dates.,generated,{}
+how to get vpn access please,vpn_access,This is the answer for vpn access.,generated,{}
+reset my vpn credentials urgently,vpn_reset,This is the answer for vpn reset.,generated,{}
+reimburse expenses asap,expense_reimbursement,This is the answer for expense reimbursement.,generated,{}
+reimburse expenses,expense_reimbursement,This is the answer for expense reimbursement.,generated,{}
+how many leaves do i get,leave_policy,This is the answer for leave policy.,generated,{}
+when is salary credited,payroll_dates,This is the answer for payroll dates.,generated,{}
+request device asap,laptop_request,This is the answer for laptop request.,generated,{}
+bank details update process,bank_details,This is the answer for bank details.,generated,{}
+apply leave in system,leave_request,This is the answer for leave request.,generated,{}
+where is my payslip urgently,payslip_access,This is the answer for payslip access.,generated,{}
+work from home guidelines please,wfh_policy,This is the answer for wfh policy.,generated,{}
+leave rules company please,leave_policy,This is the answer for leave policy.,generated,{}
+how to download payslip please,payslip_access,This is the answer for payslip access.,generated,{}
+enable vpn access asap,vpn_access,This is the answer for vpn access.,generated,{}
+how can i change vpn password please,vpn_reset,This is the answer for vpn reset.,generated,{}
+expense reimbursement process,expense_reimbursement,This is the answer for expense reimbursement.,generated,{}
+what is leave policy,leave_policy,This is the answer for leave policy.,generated,{}
+view salary slip asap,payslip_access,This is the answer for payslip access.,generated,{}
+update salary account please,bank_details,This is the answer for bank details.,generated,{}
+leave application steps please,leave_request,This is the answer for leave request.,generated,{}
+request vpn access please,vpn_access,This is the answer for vpn access.,generated,{}
+reset my vpn credentials urgently,vpn_reset,This is the answer for vpn reset.,generated,{}
+remote work policy,wfh_policy,This is the answer for wfh policy.,generated,{}
+wfh rules,wfh_policy,This is the answer for wfh policy.,generated,{}
+payroll schedule please,payroll_dates,This is the answer for payroll dates.,generated,{}
+tell me about leave policy urgently,leave_policy,This is the answer for leave policy.,generated,{}
+download salary statement asap,payslip_access,This is the answer for payslip access.,generated,{}
+payroll schedule please,payroll_dates,This is the answer for payroll dates.,generated,{}
+vpn login not working please,vpn_reset,This is the answer for vpn reset.,generated,{}
+vpn access process asap,vpn_access,This is the answer for vpn access.,generated,{}
+apply leave in system asap,leave_request,This is the answer for leave request.,generated,{}
+leave eligibility details urgently,leave_policy,This is the answer for leave policy.,generated,{}
+how to update bank details urgently,bank_details,This is the answer for bank details.,generated,{}
+submit leave request please,leave_request,This is the answer for leave request.,generated,{}
+can i work from home urgently,wfh_policy,This is the answer for wfh policy.,generated,{}
+how many leaves do i get,leave_policy,This is the answer for leave policy.,generated,{}
+submit leave request asap,leave_request,This is the answer for leave request.,generated,{}
+i forgot my vpn password,vpn_reset,This is the answer for vpn reset.,generated,{}
+tell me about leave policy asap,leave_policy,This is the answer for leave policy.,generated,{}
+salary processing date urgently,payroll_dates,This is the answer for payroll dates.,generated,{}
+how can i change vpn password urgently,vpn_reset,This is the answer for vpn reset.,generated,{}
+expense claim steps,expense_reimbursement,This is the answer for expense reimbursement.,generated,{}
+vpn login not working urgently,vpn_reset,This is the answer for vpn reset.,generated,{}
+wfh rules,wfh_policy,This is the answer for wfh policy.,generated,{}
+when will i get paid asap,payroll_dates,This is the answer for payroll dates.,generated,{}
+bank details update process urgently,bank_details,This is the answer for bank details.,generated,{}
+laptop request process urgently,laptop_request,This is the answer for laptop request.,generated,{}
+vpn setup guide urgently,vpn_access,This is the answer for vpn access.,generated,{}
+request device urgently,laptop_request,This is the answer for laptop request.,generated,{}
+where is my payslip,payslip_access,This is the answer for payslip access.,generated,{}
+how to request laptop urgently,laptop_request,This is the answer for laptop request.,generated,{}
+remote work policy urgently,wfh_policy,This is the answer for wfh policy.,generated,{}
+view salary slip asap,payslip_access,This is the answer for payslip access.,generated,{}
+work from home guidelines asap,wfh_policy,This is the answer for wfh policy.,generated,{}
+work from home policy please,wfh_policy,This is the answer for wfh policy.,generated,{}
+enable vpn access asap,vpn_access,This is the answer for vpn access.,generated,{}
+expense claim steps urgently,expense_reimbursement,This is the answer for expense reimbursement.,generated,{}
+how to download payslip,payslip_access,This is the answer for payslip access.,generated,{}
+how to get company laptop please,laptop_request,This is the answer for laptop request.,generated,{}
+download salary statement urgently,payslip_access,This is the answer for payslip access.,generated,{}
+vpn setup guide please,vpn_access,This is the answer for vpn access.,generated,{}
+laptop request process,laptop_request,This is the answer for laptop request.,generated,{}
+submit expense claim,expense_reimbursement,This is the answer for expense reimbursement.,generated,{}
+salary date asap,payroll_dates,This is the answer for payroll dates.,generated,{}
+vpn access process asap,vpn_access,This is the answer for vpn access.,generated,{}
+how to get company laptop asap,laptop_request,This is the answer for laptop request.,generated,{}
+can i work from home urgently,wfh_policy,This is the answer for wfh policy.,generated,{}
+update salary account asap,bank_details,This is the answer for bank details.,generated,{}
+when will i get paid please,payroll_dates,This is the answer for payroll dates.,generated,{}
+leave application steps urgently,leave_request,This is the answer for leave request.,generated,{}
+how to reset vpn password please,vpn_reset,This is the answer for vpn reset.,generated,{}
+need new laptop please,laptop_request,This is the answer for laptop request.,generated,{}
+how to apply for leave please,leave_request,This is the answer for leave request.,generated,{}
+i forgot my vpn password,vpn_reset,This is the answer for vpn reset.,generated,{}
+request leave process asap,leave_request,This is the answer for leave request.,generated,{}
+modify bank info urgently,bank_details,This is the answer for bank details.,generated,{}
+how to get vpn access urgently,vpn_access,This is the answer for vpn access.,generated,{}
+submit expense claim asap,expense_reimbursement,This is the answer for expense reimbursement.,generated,{}
+modify bank info,bank_details,This is the answer for bank details.,generated,{}
+change bank account urgently,bank_details,This is the answer for bank details.,generated,{}
+how to apply for leave please,leave_request,This is the answer for leave request.,generated,{}
+work from home policy asap,wfh_policy,This is the answer for wfh policy.,generated,{}
+how to claim expenses asap,expense_reimbursement,This is the answer for expense reimbursement.,generated,{}
+leave rules company,leave_policy,This is the answer for leave policy.,generated,{}
+request vpn access,vpn_access,This is the answer for vpn access.,generated,{}
+how to request laptop asap,laptop_request,This is the answer for laptop request.,generated,{}
