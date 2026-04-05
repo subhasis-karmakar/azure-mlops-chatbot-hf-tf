@@ -1,0 +1,4 @@
+schedule: monthly
+min_new_labeled_samples: 50
+min_macro_f1_improvement: 0.01
+allow_auto_promote: false

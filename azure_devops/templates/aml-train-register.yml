@@ -1,0 +1,11 @@
+jobs:
+  - job: AMLTrainRegister
+    pool: { vmImage: ubuntu-latest }
+    steps:
+      - task: UsePythonVersion@0
+        inputs: { versionSpec: '3.10' }
+      - script: |
+          python -m pip install --upgrade pip
+          pip install -e .
+          python -m src.training.train --config configs/train_config.yaml
+        displayName: Train locally or replace with Azure ML submission

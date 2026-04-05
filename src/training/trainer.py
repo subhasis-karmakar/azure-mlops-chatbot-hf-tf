@@ -1,0 +1,38 @@
+from __future__ import annotations
+from dataclasses import dataclass
+import pandas as pd
+import tensorflow as tf
+from src.features.label_encoder import fit_label_encoder, save_label_mapping
+from src.features.tokenizer_utils import get_tokenizer, tokenize_texts
+from src.training.callbacks import get_callbacks
+from src.training.model_builder import build_model
+from src.utils.helpers import ensure_dir
+
+@dataclass
+class TrainingArtifacts:
+    model_dir: str
+    history: dict
+    label_to_id: dict[str, int]
+    id_to_label: dict[int, str]
+
+def dataframe_to_dataset(df: pd.DataFrame, tokenizer, label_to_id: dict[str, int], max_length: int, batch_size: int) -> tf.data.Dataset:
+    labels = df["intent"].map(label_to_id).astype("int32").tolist()
+    encodings = tokenize_texts(df["question"].tolist(), tokenizer, max_length=max_length)
+    ds = tf.data.Dataset.from_tensor_slices((dict(encodings), labels))
+    return ds.shuffle(buffer_size=max(len(df), 1)).batch(batch_size).prefetch(tf.data.AUTOTUNE)
+
+def train_model(train_df: pd.DataFrame, val_df: pd.DataFrame, config: dict) -> TrainingArtifacts:
+    output_dir = ensure_dir(config["output_dir"])
+    label_to_id, id_to_label = fit_label_encoder(train_df["intent"].tolist())
+    tokenizer = get_tokenizer(config["model_name"])
+    train_ds = dataframe_to_dataset(train_df, tokenizer, label_to_id, config["max_length"], config["batch_size"])
+    val_ds = dataframe_to_dataset(val_df, tokenizer, label_to_id, config["max_length"], config["batch_size"])
+    model = build_model(config["model_name"], len(label_to_id))
+    optimizer = tf.keras.optimizers.Adam(learning_rate=float(config["learning_rate"]))
+    loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
+    model.compile(optimizer=optimizer, loss=loss, metrics=["accuracy"])
+    history = model.fit(train_ds, validation_data=val_ds, epochs=int(config["epochs"]), callbacks=get_callbacks(output_dir), verbose=1)
+    model.save_pretrained(output_dir)
+    tokenizer.save_pretrained(output_dir)
+    save_label_mapping(label_to_id, output_dir)
+    return TrainingArtifacts(str(output_dir), history.history, label_to_id, id_to_label)

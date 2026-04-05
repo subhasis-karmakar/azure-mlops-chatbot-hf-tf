@@ -1,0 +1,31 @@
+question,answer,intent,source,last_updated
+How many annual leaves do I get?,Employees get 18 annual leaves per year.,leave_policy,hr_policy.pdf,2025-01-01
+How many paid leaves are available?,Employees get 18 annual leaves per year.,leave_policy,hr_policy.pdf,2025-01-01
+What is the annual leave policy?,Employees get 18 annual leaves per year.,leave_policy,hr_policy.pdf,2025-01-01
+How can I reset my VPN password?,Use the IT self-service portal to reset your VPN password.,vpn_reset,it_faq.pdf,2025-01-01
+"I forgot my VPN password, how do I change it?",Use the IT self-service portal to reset your VPN password.,vpn_reset,it_faq.pdf,2025-01-01
+Where do I reset my VPN credentials?,Use the IT self-service portal to reset your VPN password.,vpn_reset,it_faq.pdf,2025-01-01
+When is payroll processed?,Payroll is processed on the last working day of each month.,payroll_dates,payroll_calendar.pdf,2025-01-01
+What day do salaries get credited?,Payroll is processed on the last working day of each month.,payroll_dates,payroll_calendar.pdf,2025-01-01
+When do we get paid?,Payroll is processed on the last working day of each month.,payroll_dates,payroll_calendar.pdf,2025-01-01
+How do I submit travel expenses?,Submit travel expenses through the expense portal within 10 business days.,expense_reimbursement,finance_policy.pdf,2025-01-01
+What is the reimbursement process?,Submit travel expenses through the expense portal within 10 business days.,expense_reimbursement,finance_policy.pdf,2025-01-01
+How can I claim my business trip expenses?,Submit travel expenses through the expense portal within 10 business days.,expense_reimbursement,finance_policy.pdf,2025-01-01
+How do I request a laptop?,Create a hardware request ticket in the IT service portal.,laptop_request,it_faq.pdf,2025-01-01
+Where can I request a new laptop?,Create a hardware request ticket in the IT service portal.,laptop_request,it_faq.pdf,2025-01-01
+What is the laptop request process?,Create a hardware request ticket in the IT service portal.,laptop_request,it_faq.pdf,2025-01-01
+How do I apply for work from home?,Follow the remote work policy and get manager approval in the HR portal.,wfh_policy,hr_policy.pdf,2025-01-01
+What is the WFH policy?,Follow the remote work policy and get manager approval in the HR portal.,wfh_policy,hr_policy.pdf,2025-01-01
+Can I work from home?,Follow the remote work policy and get manager approval in the HR portal.,wfh_policy,hr_policy.pdf,2025-01-01
+How can I update my bank details?,Update bank details in the payroll self-service system before the 20th.,bank_details,payroll_faq.pdf,2025-01-01
+Where do I change salary bank account details?,Update bank details in the payroll self-service system before the 20th.,bank_details,payroll_faq.pdf,2025-01-01
+How do I change my bank account for salary?,Update bank details in the payroll self-service system before the 20th.,bank_details,payroll_faq.pdf,2025-01-01
+How do I raise a leave request?,Submit leave requests in the HR portal and wait for manager approval.,leave_request,hr_portal_guide.pdf,2025-01-01
+Where can I submit leave?,Submit leave requests in the HR portal and wait for manager approval.,leave_request,hr_portal_guide.pdf,2025-01-01
+How do I apply for leave?,Submit leave requests in the HR portal and wait for manager approval.,leave_request,hr_portal_guide.pdf,2025-01-01
+How do I access payslips?,Payslips are available in the payroll self-service portal.,payslip_access,payroll_faq.pdf,2025-01-01
+Where can I download my payslip?,Payslips are available in the payroll self-service portal.,payslip_access,payroll_faq.pdf,2025-01-01
+How do I get salary slips?,Payslips are available in the payroll self-service portal.,payslip_access,payroll_faq.pdf,2025-01-01
+How do I get a VPN account?,Request VPN access from the IT access management portal.,vpn_access,it_faq.pdf,2025-01-01
+Where do I request VPN access?,Request VPN access from the IT access management portal.,vpn_access,it_faq.pdf,2025-01-01
+How can I apply for VPN access?,Request VPN access from the IT access management portal.,vpn_access,it_faq.pdf,2025-01-01

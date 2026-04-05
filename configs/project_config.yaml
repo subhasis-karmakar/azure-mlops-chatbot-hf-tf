@@ -1,0 +1,12 @@
+project_name: azure-mlops-chatbot-hf-tf
+environment: dev
+random_seed: 42
+paths:
+  raw_faq: data/raw/faq_data.csv
+  raw_chat_logs: data/raw/chat_logs_sample.csv
+  processed_dir: data/processed
+  artifacts_dir: artifacts
+logging:
+  level: INFO
+model:
+  name: distilbert-base-uncased

@@ -1,0 +1,8 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: drift_component
+display_name: Drift Monitor
+version: 1
+type: command
+code: ../..
+environment: azureml:chatbot-env:1
+command: python -c "print('Replace with drift job entrypoint')"

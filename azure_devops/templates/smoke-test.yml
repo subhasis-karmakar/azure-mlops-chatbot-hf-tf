@@ -1,0 +1,8 @@
+jobs:
+  - job: SmokeTest
+    pool: { vmImage: ubuntu-latest }
+    steps:
+      - script: |
+          echo "Replace with curl against deployed endpoint."
+          echo '{"question":"How do I reset my VPN password?"}'
+        displayName: Smoke test placeholder

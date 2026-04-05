@@ -1,0 +1,10 @@
+jobs:
+  - job: DeployAKS
+    pool: { vmImage: ubuntu-latest }
+    steps:
+      - script: |
+          echo "Configure kubectl context or Kubernetes service connection."
+          echo "kubectl apply -f deployment/aks/namespace.yml"
+          echo "kubectl apply -f deployment/aks/deployment.yml"
+          echo "kubectl apply -f deployment/aks/service.yml"
+        displayName: Deploy manifests placeholder

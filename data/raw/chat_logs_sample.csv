@@ -1,0 +1,5 @@
+question,timestamp,user_feedback,resolved,true_intent
+How many leaves do I get?,2026-01-10T10:00:00Z,up,True,leave_policy
+Reset vpn password,2026-01-10T11:00:00Z,up,True,vpn_reset
+When salary credited,2026-01-11T09:30:00Z,up,True,payroll_dates
+Need reimbursement process,2026-01-11T10:10:00Z,down,False,expense_reimbursement

@@ -1,0 +1,22 @@
+openapi: 3.0.3
+info: { title: Chatbot Inference API, version: 1.0.0 }
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses: { "200": { description: OK } }
+  /predict:
+    post:
+      summary: Predict chatbot intent and answer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [question]
+              properties:
+                question: { type: string }
+      responses:
+        "200":
+          description: Prediction result

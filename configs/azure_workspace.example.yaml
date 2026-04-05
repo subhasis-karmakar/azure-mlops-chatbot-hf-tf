@@ -1,0 +1,5 @@
+subscription_id: REPLACE_SUBSCRIPTION_ID
+resource_group: REPLACE_RESOURCE_GROUP
+workspace_name: REPLACE_WORKSPACE_NAME
+thresholds:
+  min_macro_f1: 0.70

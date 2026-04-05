@@ -1,0 +1,15 @@
+parameters:
+  environmentName: dev
+jobs:
+  - job: TerraformPlan
+    pool: { vmImage: ubuntu-latest }
+    steps:
+      - task: TerraformInstaller@1
+        inputs: { terraformVersion: 1.6.6 }
+      - script: |
+          cd infra
+          terraform fmt -check
+          terraform init
+          terraform validate
+          terraform plan -var-file=environments/${{ parameters.environmentName }}.tfvars
+        displayName: Terraform validate and plan

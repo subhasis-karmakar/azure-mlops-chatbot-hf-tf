@@ -1,0 +1,8 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: register_component
+display_name: Register Model
+version: 1
+type: command
+code: ../..
+environment: azureml:chatbot-env:1
+command: python -m src.registry.register_model --workspace-config configs/azure_workspace.example.yaml --model-dir artifacts/model --metrics-path artifacts/metrics.json --model-name chatbot-model

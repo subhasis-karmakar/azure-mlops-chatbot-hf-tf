@@ -1,0 +1,8 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: prep_component
+display_name: Preprocess FAQ Data
+version: 1
+type: command
+code: ../..
+environment: azureml:chatbot-env:1
+command: python -m src.training.train --config configs/train_config.yaml

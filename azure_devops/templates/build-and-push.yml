@@ -1,0 +1,9 @@
+jobs:
+  - job: BuildAndPush
+    pool: { vmImage: ubuntu-latest }
+    steps:
+      - script: |
+          docker build -f deployment/docker/Dockerfile.inference -t chatbot-inference:$(Build.BuildId) .
+        displayName: Build image
+      - script: echo "Configure ACR service connection and docker push commands here."
+        displayName: Push image placeholder

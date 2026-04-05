@@ -1,0 +1,8 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: eval_component
+display_name: Evaluate Chatbot Model
+version: 1
+type: command
+code: ../..
+environment: azureml:chatbot-env:1
+command: python -m src.evaluation.evaluate --config configs/train_config.yaml --model-dir artifacts/model

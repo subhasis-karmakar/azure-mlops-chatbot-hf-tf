@@ -1,0 +1,19 @@
+project_name: azure-mlops-chatbot-hf-tf
+random_seed: 42
+model_name: distilbert-base-uncased
+max_length: 128
+batch_size: 8
+epochs: 2
+learning_rate: 0.00005
+train_path: data/processed/train.csv
+val_path: data/processed/val.csv
+test_path: data/processed/test.csv
+faq_path: data/raw/faq_data.csv
+artifacts_dir: artifacts
+output_dir: artifacts/model
+mlflow:
+  experiment_name: azure-mlops-chatbot
+  tracking_uri: ""
+thresholds:
+  min_macro_f1: 0.70
+  fallback_confidence: 0.60

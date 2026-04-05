@@ -1,0 +1,21 @@
+{
+  "required_columns": [
+    "question",
+    "answer",
+    "intent",
+    "source",
+    "last_updated"
+  ],
+  "types": {
+    "question": "string",
+    "answer": "string",
+    "intent": "string",
+    "source": "string",
+    "last_updated": "string"
+  },
+  "non_nullable": [
+    "question",
+    "answer",
+    "intent"
+  ]
+}

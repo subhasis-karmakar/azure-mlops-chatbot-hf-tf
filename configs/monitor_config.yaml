@@ -1,0 +1,5 @@
+confidence_threshold: 0.60
+fallback_rate_threshold: 0.15
+data_drift_threshold: 0.20
+latency_p95_ms_threshold: 1500
+monitoring_window_days: 7
