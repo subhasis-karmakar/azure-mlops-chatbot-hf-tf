@@ -25,7 +25,6 @@ class ChatbotPredictor:
         self.label_to_id, self.id_to_label = load_label_mapping(self.model_dir)
         self.faq_df = pd.read_csv(faq_path)
         self.confidence_threshold = confidence_threshold
-        self.model_version = "local"
 
     def predict(self, question: str) -> dict:
         inputs = self.tokenizer(
@@ -38,28 +37,24 @@ class ChatbotPredictor:
         probs = tf.nn.softmax(logits, axis=1).numpy()[0]
 
         pred_id = int(np.argmax(probs))
-        raw_confidence = float(probs[pred_id])
-        raw_intent = self.id_to_label[pred_id]
+        confidence = float(probs[pred_id])
+        intent = self.id_to_label[pred_id]
 
-        final_intent, final_confidence = apply_fallback(
-            raw_intent,
-            raw_confidence,
+        intent, confidence = apply_fallback(
+            intent,
+            confidence,
             self.confidence_threshold,
         )
 
         answer = (
             get_fallback_answer()
-            if final_intent == "unknown"
-            else get_answer_for_intent(final_intent, self.faq_df)
+            if intent == "unknown"
+            else get_answer_for_intent(intent, self.faq_df)
         )
 
         return {
-            "question": question,
-            "raw_intent": raw_intent,
-            "raw_confidence": raw_confidence,
-            "intent": final_intent,
-            "confidence": final_confidence,
-            "threshold": self.confidence_threshold,
+            "intent": intent,
+            "confidence": confidence,
             "answer": answer,
-            "model_version": self.model_version,
+            "model_version": "local",
         }

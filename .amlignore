@@ -1,0 +1,17 @@
+.git/
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+artifacts/
+mlruns/
+logs/
+tests/
+notebooks/
+infra/
+deployment/
+azure_devops/
+data/processed/
+data/interim/
+downloaded_job_output/
+*.zip
