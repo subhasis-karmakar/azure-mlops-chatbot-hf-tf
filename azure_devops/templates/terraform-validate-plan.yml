@@ -4,30 +4,29 @@ parameters:
 jobs:
   - job: TerraformValidatePlan
     displayName: Terraform Validate and Plan
-#    pool:
-#      vmImage: ubuntu-latest
     pool:
       name: mlops-agent-pool
 
     steps:
       - checkout: self
 
-      - task: TerraformInstaller@1
-        inputs:
-          terraformVersion: 1.6.6
+      - script: |
+          set -e
+          terraform version
+        displayName: Check Terraform version
 
-      - task: AzureCLI@2
+      - script: |
+          set -e
+          cd infra
+          terraform init
+          terraform validate
+          terraform plan -out=tfplan -var-file=environments/${{ parameters.environmentName }}.tfvars
         displayName: Terraform init, validate, plan
-        inputs:
-          azureSubscription: $(AZURE_SERVICE_CONNECTION)
-          scriptType: bash
-          scriptLocation: inlineScript
-          inlineScript: |
-            set -e
-            cd infra
-            terraform init
-            terraform validate
-            terraform plan -out=tfplan -var-file=environments/${{ parameters.environmentName }}.tfvars
+        env:
+          ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+          ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+          ARM_TENANT_ID: $(ARM_TENANT_ID)
+          ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
 
       - task: PublishPipelineArtifact@1
         inputs:

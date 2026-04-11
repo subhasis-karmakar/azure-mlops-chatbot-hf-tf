@@ -5,8 +5,6 @@ jobs:
   - deployment: TerraformApply
     displayName: Terraform Apply
     environment: ${{ parameters.environmentName }}
-#    pool:
-#      vmImage: ubuntu-latest
     pool:
       name: mlops-agent-pool
 
@@ -16,9 +14,10 @@ jobs:
           steps:
             - checkout: self
 
-            - task: TerraformInstaller@1
-              inputs:
-                terraformVersion: 1.6.6
+            - script: |
+                set -e
+                terraform version
+              displayName: Check Terraform version
 
             - task: DownloadPipelineArtifact@2
               inputs:
@@ -26,15 +25,14 @@ jobs:
                 path: infra
               displayName: Download Terraform plan
 
-            - task: AzureCLI@2
+            - script: |
+                set -e
+                cd infra
+                terraform init
+                terraform apply -auto-approve tfplan
               displayName: Terraform apply
-              inputs:
-                azureSubscription: $(AZURE_SERVICE_CONNECTION)
-                scriptType: bash
-                scriptLocation: inlineScript
-                inlineScript: |
-                  set -e
-                  cd infra
-
-                  terraform init
-                  terraform apply -auto-approve tfplan
+              env:
+                ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+                ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+                ARM_TENANT_ID: $(ARM_TENANT_ID)
+                ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
