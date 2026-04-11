@@ -15,6 +15,10 @@ variable "application_type" {
   default = "web"
 }
 
+variable "workspace_id" {
+  type = string
+}
+
 variable "tags" {
   type    = map(string)
   default = {}
