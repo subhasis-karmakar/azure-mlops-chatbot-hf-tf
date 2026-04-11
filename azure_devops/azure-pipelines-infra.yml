@@ -1,15 +1,23 @@
 trigger:
   branches:
-    include: [ main ]
+    include:
+      - main
+
+variables:
+  - group: mlops-dev-infra
 
 stages:
   - stage: ValidateAndPlan
+    displayName: Validate and Plan Infra
     jobs:
       - template: templates/terraform-validate-plan.yml
         parameters:
           environmentName: dev
+
   - stage: Apply
+    displayName: Apply Infra
     dependsOn: ValidateAndPlan
+    condition: succeeded()
     jobs:
       - template: templates/terraform-apply.yml
         parameters:
