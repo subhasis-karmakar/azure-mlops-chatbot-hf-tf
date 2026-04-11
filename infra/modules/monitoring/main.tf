@@ -11,6 +11,11 @@ resource "azurerm_monitor_metric_alert" "requests" {
   severity=3
   frequency="PT5M"
   window_size="PT5M"
-  criteria { metric_namespace="Microsoft.Insights/components" metric_name="requests/count" aggregation="Total" operator="GreaterThan" threshold=0 }
-  action { action_group_id=azurerm_monitor_action_group.this.id }
+  criteria {
+    metric_namespace = "Microsoft.Insights/components"
+    metric_name      = "requests/count"
+    aggregation      = "Total"
+    operator         = "GreaterThan"
+    threshold        = 0
+  }
 }
