@@ -5,8 +5,10 @@ jobs:
   - deployment: TerraformApply
     displayName: Terraform Apply
     environment: ${{ parameters.environmentName }}
+#    pool:
+#      vmImage: ubuntu-latest
     pool:
-      vmImage: ubuntu-latest
+      name: mlops-agent-pool
 
     strategy:
       runOnce:

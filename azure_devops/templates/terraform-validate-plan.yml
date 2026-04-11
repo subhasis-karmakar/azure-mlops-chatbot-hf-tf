@@ -4,8 +4,10 @@ parameters:
 jobs:
   - job: TerraformValidatePlan
     displayName: Terraform Validate and Plan
+#    pool:
+#      vmImage: ubuntu-latest
     pool:
-      vmImage: ubuntu-latest
+      name: mlops-agent-pool
 
     steps:
       - checkout: self
