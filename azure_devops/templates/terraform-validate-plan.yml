@@ -1,15 +1,35 @@
 parameters:
   environmentName: dev
+
 jobs:
-  - job: TerraformPlan
-    pool: { vmImage: ubuntu-latest }
+  - job: TerraformValidatePlan
+    displayName: Terraform Validate and Plan
+    pool:
+      vmImage: ubuntu-latest
+
     steps:
+      - checkout: self
+
       - task: TerraformInstaller@1
-        inputs: { terraformVersion: 1.6.6 }
-      - script: |
-          cd infra
-          terraform fmt -check
-          terraform init
-          terraform validate
-          terraform plan -var-file=environments/${{ parameters.environmentName }}.tfvars
-        displayName: Terraform validate and plan
+        inputs:
+          terraformVersion: 1.6.6
+
+      - task: AzureCLI@2
+        displayName: Terraform init, validate, plan
+        inputs:
+          azureSubscription: $(AZURE_SERVICE_CONNECTION)
+          scriptType: bash
+          scriptLocation: inlineScript
+          inlineScript: |
+            set -e
+            cd infra
+            terraform init
+            terraform validate
+            terraform plan -out=tfplan -var-file=environments/${{ parameters.environmentName }}.tfvars
+
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: infra/tfplan
+          artifact: tfplan-${{ parameters.environmentName }}
+          publishLocation: pipeline
+        displayName: Publish Terraform plan
