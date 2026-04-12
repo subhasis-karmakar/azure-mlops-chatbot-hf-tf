@@ -4,26 +4,30 @@ module "resource_group" {
   location = var.location
   tags     = var.tags
 }
+
 module "networking" {
   source              = "./modules/networking"
   name_prefix         = "${var.project_name}-${var.environment}"
   location            = var.location
   resource_group_name = module.resource_group.name
 }
+
 module "storage_account" {
   source              = "./modules/storage_account"
-  name                = replace("${var.project_name}${var.environment}st", "-", "")
+  name                = var.storage_account_name
   location            = var.location
   resource_group_name = module.resource_group.name
   tags                = var.tags
 }
+
 module "acr" {
   source              = "./modules/acr"
-  name                = replace("${var.project_name}${var.environment}acr", "-", "")
+  name                = var.acr_name
   location            = var.location
   resource_group_name = module.resource_group.name
   tags                = var.tags
 }
+
 module "log_analytics" {
   source              = "./modules/log_analytics"
   name                = "${var.project_name}-${var.environment}-law"
@@ -31,6 +35,7 @@ module "log_analytics" {
   resource_group_name = module.resource_group.name
   tags                = var.tags
 }
+
 module "app_insights" {
   source              = "./modules/app_insights"
   name                = "${var.project_name}-${var.environment}-appi"
@@ -39,14 +44,16 @@ module "app_insights" {
   workspace_id        = module.log_analytics.id
   tags                = var.tags
 }
+
 module "key_vault" {
   source              = "./modules/key_vault"
-  name                = replace("${var.project_name}${var.environment}kv", "-", "")
+  name                = var.key_vault_name
   location            = var.location
   resource_group_name = module.resource_group.name
   tenant_id           = var.tenant_id
   tags                = var.tags
 }
+
 module "aml_workspace" {
   source                  = "./modules/aml_workspace"
   name                    = "${var.project_name}-${var.environment}-mlw"
@@ -58,6 +65,7 @@ module "aml_workspace" {
   container_registry_id   = module.acr.id
   tags                    = var.tags
 }
+
 module "aks" {
   source              = "./modules/aks"
   name                = "${var.project_name}-${var.environment}-aks"
@@ -69,6 +77,7 @@ module "aks" {
   subnet_id           = module.networking.aks_subnet_id
   tags                = var.tags
 }
+
 module "monitoring" {
   source              = "./modules/monitoring"
   name_prefix         = "${var.project_name}-${var.environment}"
