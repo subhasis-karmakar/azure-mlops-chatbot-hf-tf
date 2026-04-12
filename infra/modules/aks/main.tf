@@ -14,6 +14,8 @@ resource "azurerm_kubernetes_cluster" "this" {
   identity {
     type = "SystemAssigned"
   }
+  oidc_issuer_enabled       = true
+  workload_identity_enabled = true
 
   tags = var.tags
 }
