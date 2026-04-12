@@ -44,7 +44,7 @@ module "key_vault" {
   name                = replace("${var.project_name}${var.environment}kv", "-", "")
   location            = var.location
   resource_group_name = module.resource_group.name
-  tenant_id           = "REPLACE_TENANT_ID"
+  tenant_id           = var.tenant_id
   tags                = var.tags
 }
 module "aml_workspace" {
