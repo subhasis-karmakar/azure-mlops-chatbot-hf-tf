@@ -1,3 +1,4 @@
+name: chatbot-infra-$(Date:yyyyMMdd)-$(Rev:.r)
 trigger:
   branches:
     include:
