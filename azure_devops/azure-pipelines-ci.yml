@@ -1,12 +1,22 @@
+name: chatbot-ci-$(Date:yyyyMMdd)-$(Rev:.r)
+
 trigger:
   branches:
-    include: [ main ]
+    include:
+      - main
+
+variables:
+  - group: mlops-dev-infra
 
 stages:
   - stage: Quality
+    displayName: Python Quality
     jobs:
       - template: templates/python-quality.yml
+
   - stage: Build
+    displayName: Build and Push Inference Image
     dependsOn: Quality
+    condition: succeeded()
     jobs:
       - template: templates/build-and-push.yml

@@ -1,9 +1,50 @@
 jobs:
   - job: BuildAndPush
-    pool: { vmImage: ubuntu-latest }
+    displayName: Build and push inference image
+    pool:
+      name: mlops-agent-pool
+
     steps:
+      - checkout: self
+
       - script: |
-          docker build -f deployment/docker/Dockerfile.inference -t chatbot-inference:$(Build.BuildId) .
-        displayName: Build image
-      - script: echo "Configure ACR service connection and docker push commands here."
-        displayName: Push image placeholder
+          set -e
+          az version
+          docker --version
+        displayName: Check CLI tools
+
+      - script: |
+          set -e
+          az login --service-principal \
+            --username "$(ARM_CLIENT_ID)" \
+            --password "$(ARM_CLIENT_SECRET)" \
+            --tenant "$(ARM_TENANT_ID)"
+
+          az account set --subscription "$(ARM_SUBSCRIPTION_ID)"
+          az acr login --name "$(ACR_NAME)"
+        displayName: Login to Azure and ACR
+
+      - script: |
+          set -e
+          IMAGE_TAG="$(Build.BuildId)"
+          IMAGE_NAME="$(ACR_NAME).azurecr.io/chatbot-inference:${IMAGE_TAG}"
+
+          echo "Building ${IMAGE_NAME}"
+          docker build \
+            -f deployment/docker/Dockerfile.inference \
+            -t "${IMAGE_NAME}" \
+            .
+
+          docker push "${IMAGE_NAME}"
+
+          echo "${IMAGE_NAME}" > image_name.txt
+          echo "##vso[task.setvariable variable=IMAGE_NAME;isOutput=true]${IMAGE_NAME}"
+        name: buildpush
+        displayName: Build and push image
+
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: image_name.txt
+          artifact: inference-image
+          publishLocation: pipeline
+        displayName: Publish image metadata

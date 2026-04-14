@@ -1,8 +1,8 @@
 name: chatbot-infra-$(Date:yyyyMMdd)-$(Rev:.r)
-trigger:
-  branches:
-    include:
-      - main
+trigger: none
+#  branches:
+#    include:
+#      - main
 
 variables:
   - group: mlops-dev-infra
