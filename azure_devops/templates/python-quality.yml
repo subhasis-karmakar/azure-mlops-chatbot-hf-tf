@@ -11,10 +11,17 @@ jobs:
           set -e
           python3 --version
 
+          # Install dependencies (only once needed ideally)
           sudo apt-get update
           sudo apt-get install -y python3-pip python3-venv
 
-          python3 -m pip install --upgrade pip
-          python3 -m pip install -e .[dev]
+          # Create virtual environment
+          python3 -m venv .venv
+          source .venv/bin/activate
+
+          # Install dependencies inside venv
+          pip install --upgrade pip
+          pip install -e .[dev]
+
           pytest -q
         displayName: Install and test
