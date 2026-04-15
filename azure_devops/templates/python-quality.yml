@@ -9,19 +9,19 @@ jobs:
 
       - script: |
           set -e
-          python3 --version
-
-          # Install dependencies (only once needed ideally)
           sudo apt-get update
-          sudo apt-get install -y python3-pip python3-venv
+          sudo apt-get install -y software-properties-common
+          sudo add-apt-repository -y ppa:deadsnakes/ppa || true
+          sudo apt-get update
+          sudo apt-get install -y python3.10 python3.10-venv python3-pip
 
-          # Create virtual environment
-          python3 -m venv .venv
+          python3.10 --version
+
+          python3.10 -m venv .venv
           source .venv/bin/activate
 
-          # Install dependencies inside venv
-          pip install --upgrade pip
-          pip install -e .[dev]
+          python -m pip install --upgrade pip
+          python -m pip install -e .[dev]
 
           pytest -q
         displayName: Install and test
