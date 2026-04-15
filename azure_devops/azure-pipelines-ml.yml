@@ -1,0 +1,15 @@
+name: chatbot-ml-$(Date:yyyyMMdd)-$(Rev:.r)
+
+trigger: none
+pr: none
+
+variables:
+  - group: mlops-dev-infra
+
+stages:
+  - stage: TrainRegisterDeploy
+    displayName: Train, Register, Deploy AML Endpoint
+    jobs:
+      - template: templates/aml-train-register-deploy.yml
+        parameters:
+          environmentName: dev

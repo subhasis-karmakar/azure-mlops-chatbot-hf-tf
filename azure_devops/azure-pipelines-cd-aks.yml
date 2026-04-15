@@ -1,0 +1,15 @@
+name: chatbot-cd-aks-$(Date:yyyyMMdd)-$(Rev:.r)
+
+trigger: none
+pr: none
+
+variables:
+  - group: mlops-dev-infra
+
+stages:
+  - stage: DeployToAKS
+    displayName: Deploy to AKS
+    jobs:
+      - template: templates/deploy-aks.yml
+        parameters:
+          environmentName: dev

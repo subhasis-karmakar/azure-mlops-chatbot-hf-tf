@@ -2,8 +2,8 @@ parameters:
   environmentName: dev
 
 jobs:
-  - job: TrainRegisterDeploy
-    displayName: Train, Register and Deploy
+  - job: RetrainModel
+    displayName: Retrain model
     pool:
       name: mlops-agent-pool
 
@@ -18,53 +18,20 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y python3.10 python3.10-venv python3.10-distutils
 
-          python3.10 --version
-        displayName: Install Python 3.10
-
-      - script: |
-          set -e
           python3.10 -m venv .venv
           source .venv/bin/activate
 
-          python --version
           pip install --upgrade pip
           pip install -r requirements.txt
-        displayName: Setup Python 3.10 environment
 
-      - script: |
-          set -e
           az login --service-principal \
             --username "$(ARM_CLIENT_ID)" \
             --password "$(ARM_CLIENT_SECRET)" \
             --tenant "$(ARM_TENANT_ID)"
 
           az account set --subscription "$(ARM_SUBSCRIPTION_ID)"
-        displayName: Login to Azure
 
-      - script: |
-          set -e
-          source .venv/bin/activate
           export PYTHON_BIN=$(which python)
-
-          $PYTHON_BIN --version
-          rm -rf artifacts/model
-
           TF_USE_LEGACY_KERAS=0 $PYTHON_BIN pipelines/train_job.py
-        displayName: Submit training job
-
-      - script: |
-          set -e
-          source .venv/bin/activate
-          export PYTHON_BIN=$(which python)
-
           $PYTHON_BIN pipelines/register_model_job.py
-        displayName: Register model
-
-#AML managed endpoint deployment
-     # - script: |
-     #     set -e
-     #     source .venv/bin/activate
-     #     export PYTHON_BIN=$(which python)
-
-     #     $PYTHON_BIN pipelines/deploy_endpoint.py
-     #   displayName: Deploy AML endpoint
+        displayName: Retrain and register

@@ -1,0 +1,23 @@
+name: chatbot-retrain-$(Date:yyyyMMdd)-$(Rev:.r)
+
+trigger: none
+pr: none
+
+schedules:
+  - cron: "0 2 * * 0"
+    displayName: Weekly retrain
+    branches:
+      include:
+        - main
+    always: true
+
+variables:
+  - group: mlops-dev-infra
+
+stages:
+  - stage: Retrain
+    displayName: Retrain model
+    jobs:
+      - template: templates/retrain.yml
+        parameters:
+          environmentName: dev

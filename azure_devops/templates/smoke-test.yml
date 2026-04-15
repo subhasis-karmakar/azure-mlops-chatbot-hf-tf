@@ -1,8 +1,37 @@
-jobs:
-  - job: SmokeTest
-    pool: { vmImage: ubuntu-latest }
-    steps:
-      - script: |
-          echo "Replace with curl against deployed endpoint."
-          echo '{"question":"How do I reset my VPN password?"}'
-        displayName: Smoke test placeholder
+parameters:
+  namespace: chatbot-dev
+
+steps:
+  - script: |
+      set -e
+
+      kubectl get pods -n ${{ parameters.namespace }}
+      kubectl get svc -n ${{ parameters.namespace }}
+
+      POD=$(kubectl get pods -n ${{ parameters.namespace }} -l app=chatbot-inference -o jsonpath='{.items[0].metadata.name}')
+
+      kubectl port-forward -n ${{ parameters.namespace }} pod/$POD 8080:8080 >/tmp/pf.log 2>&1 &
+      PF_PID=$!
+      sleep 10
+
+      TRACK=$(curl -s -X POST http://127.0.0.1:8080/score \
+        -H "Content-Type: application/json" \
+        -d '{"question":"How can I track my order?"}')
+
+      FRANCE=$(curl -s -X POST http://127.0.0.1:8080/score \
+        -H "Content-Type: application/json" \
+        -d '{"question":"What is the capital of France?"}')
+
+      RETURNS=$(curl -s -X POST http://127.0.0.1:8080/score \
+        -H "Content-Type: application/json" \
+        -d '{"question":"How do I return a product?"}')
+
+      echo "TRACK=$TRACK"
+      echo "FRANCE=$FRANCE"
+      echo "RETURNS=$RETURNS"
+
+      echo "$TRACK" | grep -qi "orders_shipping"
+      echo "$FRANCE" | grep -qi '"intent": "unknown"\|"intent":"unknown"'
+
+      kill $PF_PID
+    displayName: Smoke test
